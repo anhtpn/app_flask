@@ -9,6 +9,19 @@ api = Api(app)
 config()
 initialize_routes(api)
 
+@app.route("/")
+def home():
+    return render_template("login.html")
+
+@app.route("/movie")
+def movie():
+    user_details = {
+        'name': 'John',
+        'email': 'john@doe.com'
+    }
+    return render_template("movie.html", user=user_details)
+
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # app.run(debug=True)
+    app.run()
