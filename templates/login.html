@@ -48,7 +48,7 @@
             </div>
           </div>
           <div class="card-body">
-            <form method="GET">
+            <form method="POST">
               <div class="input-group form-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text"
@@ -59,6 +59,7 @@
                   type="text"
                   class="form-control"
                   placeholder="username"
+                  name="username"
                 />
               </div>
               <div class="input-group form-group">
@@ -71,21 +72,19 @@
                   type="password"
                   class="form-control"
                   placeholder="password"
+                  name="password"
                 />
               </div>
               <div class="row align-items-center remember">
                 <input type="checkbox" />Remember Me
               </div>
               <div class="form-group">
-                <input type="submit" value="Login" id="submitBtn" class="btn float-right login_btn"/>
-                <script>
-                  document
-                    .getElementById("submitBtn")
-                    .addEventListener("click", myFunction);
-                  function myFunction() {
-                    window.location.href = "http://127.0.0.1:5000/api/model/1";
-                  }
-                </script>
+                <input
+                  type="submit"
+                  value="Login"
+                  id="submitBtn"
+                  class="btn float-right login_btn"
+                />
               </div>
             </form>
           </div>

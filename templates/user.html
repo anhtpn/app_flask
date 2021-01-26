@@ -42,14 +42,16 @@
             <th scope="col">#</th>
             <th scope="col">Movie</th>
             <th scope="col">Rating</th>
+            <th scope="col">Time Stamp</th>
           </tr>
         </thead>
         <tbody>
           {% for i in range(length) %}
           <tr>
             <th scope="row">{{i+1}}</th>
-            <td>{{movies[i].name}}</td>
+            <td>{{movies[i].movieId}}</td>
             <td>{{movies[i].rating}}</td>
+            <td>{{movies[i].timestamp}}</td>
           </tr>
           {% endfor %}
         </tbody>
