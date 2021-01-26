@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      async function recommendFunction(e) {
+        // e.preventDefault();
+        await console.log("test");
+        // const formData = new FormData(thisForm).entries();
+        const response = await fetch("http://127.0.0.1:5000/api/user/5", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+          //   body: JSON.stringify(Object.fromEntries(formData)),
+        });
+
+        const result = await response.json();
+        await console.log(result);
+        $("#result").text(result);
+      }
+      $("#result").html("result");
+    </script>
+  </head>
+  <body>
+    <form id="myForm">
+      <input
+        id="postSubmit"
+        type="submit"
+        value="Send Me!"
+        onclick="recommendFunction()"
+      />
+    </form>
+    <div id="result"></div>
+  </body>
+</html>
