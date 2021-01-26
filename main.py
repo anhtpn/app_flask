@@ -3,6 +3,8 @@ from flask_restful import Api
 from connect import config
 from routes.routes import initialize_routes
 
+from my_code.Process import RecommendMovie
+
 from read_file import get_user_id
 
 
@@ -17,35 +19,29 @@ def home():
     return render_template("login.html")
 
 
-@app.route("/user")
-def user_movie():
+@app.route("/recommend")
+def recommend():
+    movies = []
 
     if 'user' in session:
         user = session['user']
-        movies = get_user_id(user)
-
-    return render_template("user.html", movies=movies, length=len(movies))
+        print(user)
+        movies = RecommendMovie(user)
+    return render_template("recommend.html", movies=movies, length=len(movies))
 
 
 @app.route("/", methods=['POST'])
 def login_post():
-    email = request.form.get('username')
+    username = request.form.get('username')
     password = request.form.get('password')
-    print(email)
-    session["user"] = email
+    # print(email)
+    session["user"] = username
     return redirect(url_for('movie'))
 
 
 @app.route("/movie")
 def movie():
-    # if 'user' in session:
-    #     user = session['user']
-    #     print(user)
-    # movies = [
-    #     {"name": "One Magic Christmas (1985)", "rating": 5},
-    #     {"name": "Return from Witch Mountain (1978) ", "rating": 5}
-    # ]
-    # return render_template("movie.html", movies=movies, length=len(movies))
+    
 
     if 'user' in session:
         user = session['user']

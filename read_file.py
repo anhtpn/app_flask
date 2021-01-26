@@ -20,4 +20,6 @@ def get_user_id(user_id):
     
     return res
 
+print(get_user_id(1))
+
 

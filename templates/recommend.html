@@ -36,20 +36,21 @@
       crossorigin="anonymous"
     ></script>
     <div class="container">
+      <!-- {{movies}} -->
       <table class="table">
         <thead>
           <tr>
             <th scope="col">#</th>
             <th scope="col">Movie</th>
-            <th scope="col">Rating</th>
+            <!-- <th scope="col">Rating</th> -->
           </tr>
         </thead>
         <tbody>
           {% for i in range(length) %}
           <tr>
             <th scope="row">{{i+1}}</th>
-            <td>{{movies[i].name}}</td>
-            <td>{{movies[i].rating}}</td>
+            <td>{{movies[i]}}</td>
+            <!-- <td>{{movies[i].rating}}</td> -->
           </tr>
           {% endfor %}
         </tbody>

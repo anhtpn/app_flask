@@ -73,7 +73,11 @@ class Evaluator:
             recommendations.sort(key=lambda x: x[1], reverse=True)
             
             for ratings in recommendations[:10]:
-                res.append(ml.getMovieName(ratings[0]), ratings[1])
+                # dic = {
+                    # "name" : ml.getMovieName(ratings[0]),
+                    # "ra"
+                # }
+                res.append(ml.getMovieName(ratings[0]))
                 # print(ml.getMovieName(ratings[0]), ratings[1])
         return res
             
