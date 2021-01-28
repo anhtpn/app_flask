@@ -51,7 +51,7 @@ class Evaluator:
     def SampleTopNRecs(self, ml, testSubject=85, k=10):
         res = []
         
-        for algo in self.algorithms:
+"""         for algo in self.algorithms:
             print("\nUsing recommender ", algo.GetName())
             
             #print("\nBuilding recommendation model...")
@@ -77,8 +77,34 @@ class Evaluator:
                     # "name" : ml.getMovieName(ratings[0]),
                     # "ra"
                 # }
+                print(ml.getMovieName(ratings[0]), ratings[1])
+                res.append(ml.getMovieName(ratings[0])) """
+        for algo in self.algorithms:
+            print("\nUsing recommender ", algo.GetName())
+            
+            print("\nBuilding recommendation model...")
+            #trainSet = self.dataset.GetFullTrainSet()
+            #algo.GetAlgorithm().fit(trainSet)
+            
+            print("Computing recommendations...")
+            testSet = self.dataset.GetAntiTestSetForUser(testSubject)
+        
+            predictions = algo.GetAlgorithm().test(testSet)
+            
+            recommendations = []
+            
+            print ("\nWe recommend:")
+            for userID, movieID, actualRating, estimatedRating, _ in predictions:
+                intMovieID = int(movieID)
+                recommendations.append((intMovieID, estimatedRating))
+            
+            recommendations.sort(key=lambda x: x[1], reverse=True)
+            
+            for ratings in recommendations[:10]:
                 res.append(ml.getMovieName(ratings[0]))
-                # print(ml.getMovieName(ratings[0]), ratings[1])
+                #print(ml.getMovieName(ratings[0]), ratings[1])
+            for m in res:
+                print (m)
         return res
             
                 

@@ -6,6 +6,7 @@ from routes.routes import initialize_routes
 from my_code.Process import RecommendMovie
 
 from read_file import get_user_id
+from read_file import get_rating
 
 
 app = Flask(__name__)
@@ -42,11 +43,14 @@ def login_post():
 @app.route("/movie")
 def movie():
     
-
     if 'user' in session:
         user = session['user']
         movies = get_user_id(user)
-
+        plt.figure(figsize=[5,10]); # Set dimensions for figure
+        plt.plot(get_rating(user))
+        plt.title("")
+        plt.show()
+        plt.savefig('../static/1.svg', format='svg', dpi=1200)
     return render_template("user.html", movies=movies, length=len(movies))
 
 
